@@ -38,8 +38,7 @@ public class CommercialTenantAction {
 	}
 
 	@RequestMapping(value = "/addCt.do")
-	public void addCt(Postion postion, CommercialTenant ct) throws IOException, JSONException, InfoTipException {
-	//	ct.setPostion(postion);
+	public void addCt(CommercialTenant ct) throws IOException, JSONException, InfoTipException {
 		ctBo.addCt(ct);
 	}
 

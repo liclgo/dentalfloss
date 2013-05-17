@@ -1,7 +1,5 @@
 package com.df.dao;
 
-import java.util.Iterator;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -35,8 +33,8 @@ public class CommercialTenantDaoImp implements CommercialTenantDao {
 
 	public GeoResults<CommercialTenant> getNearCt(Float lat, Float lng,
 			Integer num, Double distance) {
-		Point location = new Point(30, 120);
-		NearQuery near = NearQuery.near(location);
+		Point location = new Point(lat,lng);
+		NearQuery near = NearQuery.near(location).maxDistance(0.4).num(num);
 		return mongo.geoNear(near, CommercialTenant.class);
 	}
 

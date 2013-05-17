@@ -37,8 +37,9 @@ public class CommercialTenantBoImp implements CommercialTenantBo {
 		}
 		o = new JSONObject(o.getString("result"));
 		o = new JSONObject(o.getString("location"));
-		ct.getPostion().setLng(new Float(o.getString("lng")));
-		ct.getPostion().setLat(new Float(o.getString("lat")));
+		float[] f = new float[] { new Float(o.getString("lat")),
+				new Float(o.getString("lng")) };
+		ct.setLocation(f);
 		commercialTenantDao.addCt(ct);
 	}
 
@@ -47,7 +48,7 @@ public class CommercialTenantBoImp implements CommercialTenantBo {
 	}
 
 	public GeoResults<CommercialTenant> getNearCt(Float lat, Float lng,
-			Integer num, Double  distance) {
+			Integer num, Double distance) {
 		return commercialTenantDao.getNearCt(lat, lng, num, distance);
 	}
 

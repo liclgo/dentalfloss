@@ -50,15 +50,15 @@ public class CommercialTenantActionTest {
 
 	@Test
 	public void test() throws Exception {
-		mockMvc.perform((get("/ct/getpostion.do")).param("address", "杭州网易"))
+		mockMvc.perform((get("/ct/getpostion.do")).param("address", "北京网易"))
 				.andExpect(status().isOk()).andDo(print());
 	}
 
 	@Test
 	public void testa() throws Exception {
 		mockMvc.perform(
-				(get("/ct/addCt.do")).param("address", "杭州市网易").param("ctName",
-						"ctName")).andExpect(status().isOk()).andDo(print())
+				(get("/ct/addCt.do")).param("address", "北京网易").param("ctName",
+						"beijingwangyi")).andExpect(status().isOk()).andDo(print())
 				.andExpect(status().isOk());
 	}
 
@@ -66,25 +66,8 @@ public class CommercialTenantActionTest {
 	public void testc() throws Exception {
 		mockMvc.perform(
 				(get("/ct/findnear.do")).param("lng", "116").param("lat", "40")
-						.param("num", "1").param("distance", "10000000"))
+						.param("num", "1").param("distance", "200"))
 				.andExpect(status().isOk()).andDo(print())
 				.andExpect(status().isOk());
-	}
-
-	@Test
-	public void testd() throws Exception {
-		CommercialTenant ct = new CommercialTenant();
-		ct.setAddress("one");
-		Postion p = new Postion();
-		p.setLat(30.0f);
-		p.setLng(120.0f);
-		Float[] d = new Float[]{new Float(30f),new Float(120f)} ;
-		ct.setLocation(d);
-		// mongo.save(ct);
-		Point location = new Point(40, 120);
-		NearQuery near = NearQuery.near(location).num(1).spherical(false);
-		GeoResults r = mongo.geoNear(near, CommercialTenant.class);
-		System.out.println(new JSONObject(r).toString());
-
 	}
 }

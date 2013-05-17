@@ -13,7 +13,7 @@ public class CommercialTenant {
 	private String address;
 	
 	@GeoSpatialIndexed
-	private Float[] location;
+	private float[] location;
 
 	public String getCtId() {
 		return ctId;
@@ -39,11 +39,11 @@ public class CommercialTenant {
 		this.address = address;
 	}
 
-	public Float[] getLocation() {
+	public float[] getLocation() {
 		return location;
 	}
 
-	public void setLocation(Float[] location) {
+	public void setLocation(float[] location) {
 		this.location = location;
 	}
 
