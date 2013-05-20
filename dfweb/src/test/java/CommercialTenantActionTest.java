@@ -65,7 +65,7 @@ public class CommercialTenantActionTest {
 	@Test
 	public void testc() throws Exception {
 		mockMvc.perform(
-				(get("/ct/findnear.do")).param("lng", "116").param("lat", "40")
+				(get("/ct/findnear.do")).param("lng", "40").param("lat", "40")
 						.param("num", "1").param("distance", "200"))
 				.andExpect(status().isOk()).andDo(print())
 				.andExpect(status().isOk());

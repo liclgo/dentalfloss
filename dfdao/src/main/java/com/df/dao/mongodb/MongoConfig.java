@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 
 @Configuration
 public class MongoConfig {
@@ -17,7 +18,7 @@ public class MongoConfig {
 
 	public @Bean
 	MongoOperations abc() throws UnknownHostException {
-		return new MongoTemplate(new SimpleMongoDbFactory(new Mongo(
+		return new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(
 				jdbcUrl), "test"));
 	}
 

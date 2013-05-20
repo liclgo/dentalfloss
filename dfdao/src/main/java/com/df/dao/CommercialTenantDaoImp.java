@@ -34,8 +34,9 @@ public class CommercialTenantDaoImp implements CommercialTenantDao {
 	public GeoResults<CommercialTenant> getNearCt(Float lat, Float lng,
 			Integer num, Double distance) {
 		Point location = new Point(lat,lng);
-		NearQuery near = NearQuery.near(location).maxDistance(0.4).num(num);
+		NearQuery near = NearQuery.near(location).inKilometers().maxDistance(50000).num(num);
 		return mongo.geoNear(near, CommercialTenant.class);
+		
 	}
 
 }
