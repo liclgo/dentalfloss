@@ -25,10 +25,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.dbweb.ex.InfoTipException;
 import com.df.bean.CommercialTenant;
-import com.df.bean.Postion;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -57,17 +54,40 @@ public class CommercialTenantActionTest {
 	@Test
 	public void testa() throws Exception {
 		mockMvc.perform(
-				(get("/ct/addCt.do")).param("address", "北京网易").param("ctName",
-						"beijingwangyi")).andExpect(status().isOk()).andDo(print())
-				.andExpect(status().isOk());
+				(get("/ct/addService.do")).param("address", "北京网易").param(
+						"ctName", "beijingwangyi")).andExpect(status().isOk())
+				.andDo(print()).andExpect(status().isOk());
 	}
 
 	@Test
 	public void testc() throws Exception {
 		mockMvc.perform(
-				(get("/ct/findnear.do")).param("lng", "40").param("lat", "40")
-						.param("num", "1").param("distance", "200"))
+				(get("/ct/findnear.do")).param("lng", "116").param("lat", "40")
+						.param("num", "1").param("distance", "35"))
 				.andExpect(status().isOk()).andDo(print())
 				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void testd() throws Exception {
+		mockMvc.perform(
+				(get("/ct/findnear.do")).param("lng", "116").param("lat", "40")
+						.param("num", "1").param("distance", "35"))
+				.andExpect(status().isOk()).andDo(print())
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void teste() throws Exception {
+		mockMvc.perform(
+				(get("/ct/addService.do")).param("ctId",
+						"5199d732b197519470dcaf17")).andExpect(status().isOk())
+				.andDo(print()).andExpect(status().isOk());
+	}
+
+	@Test
+	public void testlist() throws Exception {
+		mockMvc.perform((get("/ct/list.do"))).andExpect(status().isOk())
+				.andDo(print()).andExpect(status().isOk());
 	}
 }

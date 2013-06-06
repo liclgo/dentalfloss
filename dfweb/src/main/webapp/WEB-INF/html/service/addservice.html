@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<#include "../common/head.html" />
+<script type="text/javascript">
+$(function(){
+	//添加字段
+	$("#addField").click(function(){
+		$('#clone').clone().show().appendTo('ul');
+	})
+	//选择框变化
+	$("ul").on("change","select",function(){
+		$(this).nextAll().hide();
+		$(this).nextAll("."+$(this).val()).show();
+	})
+})
+
+</script> 
+</head>
+<body>
+<input type="text" value="服务名称" name="serviceName"/>
+<input type="button" value="添加字段" id="addField"/>
+<form action="${base}/service/saveService.do" method="post">
+    <input type="hidden" name="ctId" value="${ctId}"/>
+    <ul>
+        <li id="clone" style="display:none">
+         	  字段名称:<input type="text" name="filedName"/></br>
+		  	  字段类型:
+		  	         <select name="type" >
+			  	         <#list para as para>
+			  	         <option value="${para}">${para}</option>
+			  	         </#list>
+		  	         </select>
+		  	         </br>
+		  	         <div style="display:none" class="select">
+		  	         	<input type='text' name='selectValues' >输入值以,分割</input></br><input type='text' name='selectDefalutValue'>默认值</input>
+		  	         </div>
+		  	         <div style="display:none" class="radio">
+		  	         	<input type='text' name='radioValues' >输入值以,分割</input></br><input type='text' name='radioDefalutValue'>默认值</input>
+		  	         </div>
+		  	         <div style="display:none" class="checkbox">
+		  	         	<input type='text' name='checkboxValues' >输入值以,分割</input></br><input type='text' name='checkboxDefalutValue'>默认值</input>
+		  	         </div>
+		  	         </br>
+		  	         </br>
+        </li>
+	</ul>
+	<input type="submit" value="提交" />
+</form>
+</body>
+</html>

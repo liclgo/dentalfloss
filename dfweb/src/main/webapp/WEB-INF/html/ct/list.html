@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<#include "../common/head.html" />
+</head>
+<body>
+<a href="${base}/ct/addCt.do">添加商户</a></br>
+<#list page.list as ct>
+商户ID:${ct.ctId}
+商户NAME:${ct.ctName}
+商户ID:${ct.address}
+经度:#{ct.location[0];m15M15}
+纬度:#{ct.location[1];m15M15}
+<a href="${base}/service/addService.do?ctId=${ct.ctId}">添加服务</a></br>
+</br>
+</#list>
+</body>
+</html>

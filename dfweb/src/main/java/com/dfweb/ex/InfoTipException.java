@@ -1,4 +1,5 @@
-package com.dbweb.ex;
+package com.dfweb.ex;
+
 
 public class InfoTipException extends Exception {
 

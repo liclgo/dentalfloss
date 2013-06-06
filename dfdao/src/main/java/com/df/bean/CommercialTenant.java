@@ -1,5 +1,7 @@
 package com.df.bean;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 
@@ -11,6 +13,8 @@ public class CommercialTenant {
 	private String ctName;
 
 	private String address;
+	
+	private List<String> service;
 	
 	@GeoSpatialIndexed
 	private float[] location;
@@ -45,6 +49,14 @@ public class CommercialTenant {
 
 	public void setLocation(float[] location) {
 		this.location = location;
+	}
+
+	public List<String> getService() {
+		return service;
+	}
+
+	public void setService(List<String> service) {
+		this.service = service;
 	}
 
 }

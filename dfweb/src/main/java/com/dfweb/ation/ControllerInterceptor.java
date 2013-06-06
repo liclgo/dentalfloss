@@ -19,7 +19,9 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-
+		if (modelAndView != null) {
+			modelAndView.addObject("base", request.getContextPath());
+		}
 	}
 
 	// 拦截器3号 请求执行完毕后调用
@@ -27,7 +29,7 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		if (ex != null){
+		if (ex != null) {
 			System.out.println("cccccccc");
 		}
 	}
