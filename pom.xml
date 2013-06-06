@@ -34,8 +34,15 @@
 				<baidumapkey>D8d96e46c1cc5c5581d8cac6ad8e174a</baidumapkey>
 			</properties>
 		</profile>
+		<profile>
+			<id>aliyun</id>
+			<properties>
+				<mongoip>127.0.0.1</mongoip>
+				<baidumapkey>D8d96e46c1cc5c5581d8cac6ad8e174a</baidumapkey>
+			</properties>
+		</profile>
 	</profiles>
-	<!-- kdaQEobo abc  da#@I*O(-->
+	<!-- kdaQEobo abc da#@I*O( -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
